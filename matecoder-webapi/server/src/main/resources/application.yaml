@@ -1,0 +1,36 @@
+server:
+  port: 8888
+  max-http-header-size: 4048576
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://122.51.97.89:3306/odin?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: odin_user
+    password: odin?123456
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  packages-to-scan: net.somta.odin.web.controller
+
+mybatis:
+  mapper-locations: classpath*:mybatis/**/Mysql_*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+odin:
+  login:
+    type: ldap
+    ldap:
+      url: ldap://122.51.97.89
+      base: dc=somta,dc=net
+      username: cn=admin,dc=somta,dc=net
+      password: 123456
+  devops:
+    git:
+      url: https://127.0.0.1
+    ci:
+      url: https://127.0.0.1

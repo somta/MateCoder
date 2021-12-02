@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.somta.matecoder.mapper.basic.EnvironmentMapper" >
+
+
+<!-- 根据名称查询 环境 -->
+<select id="queryEnvironmentByName" resultType="net.somta.matecoder.model.basic.Environment" parameterType="java.lang.String">
+    select
+    id,name
+    from t_environment WHERE name = #{name}
+</select>
+
+</mapper>

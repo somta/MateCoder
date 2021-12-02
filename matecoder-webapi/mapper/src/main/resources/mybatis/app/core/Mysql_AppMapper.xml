@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.somta.matecoder.mapper.app.AppMapper" >
+
+<!-- Result Map-->
+<resultMap id="BaseResultMap" type="net.somta.matecoder.model.app.App" >
+		<result column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="description" property="description"/>
+		<result column="type" property="type"/>
+		<result column="language" property="language"/>
+		<result column="owner" property="owner"/>
+		<result column="env_name" property="envName"/>
+		<result column="domain_id" property="domainId"/>
+		<result column="group_id" property="groupId"/>
+		<result column="git_id" property="gitId"/>
+		<result column="git_url" property="gitUrl"/>
+		<result column="replicas" property="replicas"/>
+		<result column="extra_info" property="extraInfo"/>
+		<result column="created_at" property="createdAt"/>
+		<result column="created_by" property="createdBy"/>
+		<result column="updated_at" property="updatedAt"/>
+		<result column="updated_by" property="updatedBy"/>
+</resultMap>
+       
+<!-- 查询条件 -->
+<sql id="Example_Where_Clause">
+        where 1=1
+	<if test="envName != null and name != ''">
+		and env_name=#{envName}
+	</if>
+</sql>
+       
+<!-- t_app table all fields -->
+<sql id="Base_Column_List" >
+	 id,name,description,type,language,owner,env_name,domain_id,group_id,git_id,git_url,replicas,extra_info,created_at,created_by,updated_at,updated_by
+</sql>
+   
+<!-- 新增应用 -->
+<insert id="add" parameterType="net.somta.matecoder.model.app.App" >
+	 insert into t_app(name,description,type,language,owner,env_name,domain_id,group_id,git_id,git_url,replicas,extra_info,created_at,created_by,updated_at,updated_by)
+ values(#{name},#{description},#{type},#{language},#{owner},#{envName},#{domainId},#{groupId},#{gitId},#{gitUrl},#{replicas},#{extraInfo},#{createdAt},#{createdBy},#{updatedAt},#{updatedBy})
+</insert>
+
+<!-- 根据ID物理删除应用 -->
+<delete id="deleteById" parameterType="java.lang.Integer">
+	delete 	 from t_app where id = #{Id}
+</delete>
+
+<!-- 修改应用信息 -->
+<update id="update" parameterType="net.somta.matecoder.model.app.App" >
+	update t_app set 
+	<trim  suffixOverrides="," >
+	<if test="name != null and name != '' ">
+		name=#{name},
+	</if>
+	<if test="description != null and description != '' ">
+		description=#{description},
+	</if>
+	<if test="type != null and type != '' ">
+		type=#{type},
+	</if>
+	<if test="language != null and language != '' ">
+		language=#{language},
+	</if>
+	<if test="owner != null and owner != '' ">
+		owner=#{owner},
+	</if>
+	<if test="envName != null and envName != '' ">
+		env_name=#{envName},
+	</if>
+	<if test="domainId != null  ">
+		domain_id=#{domainId},
+	</if>
+	<if test="groupId != null  ">
+		group_id=#{groupId},
+	</if>
+	<if test="gitId != null  ">
+		git_id=#{gitId},
+	</if>
+	<if test="gitUrl != null and gitUrl != '' ">
+		git_url=#{gitUrl},
+	</if>
+	<if test="replicas != null  ">
+		replicas=#{replicas},
+	</if>
+	<if test="extraInfo != null and extraInfo != '' ">
+		extra_info=#{extraInfo},
+	</if>
+	<if test="createdAt != null  ">
+		created_at=#{createdAt},
+	</if>
+	<if test="createdBy != null  ">
+		created_by=#{createdBy},
+	</if>
+	<if test="updatedAt != null  ">
+		updated_at=#{updatedAt},
+	</if>
+	<if test="updatedBy != null  ">
+		updated_by=#{updatedBy},
+	</if>
+	</trim> where id=#{id}
+</update>
+
+<!-- 根据ID查询 应用 -->
+<select id="queryById"  resultMap="BaseResultMap" parameterType="java.lang.Integer">
+	select 
+ 	 <include refid="Base_Column_List" /> 
+	 from t_app WHERE id = #{Id}
+</select>
+
+<!-- 查询应用列表 -->
+<select id="queryByList" resultMap="BaseResultMap"  parameterType="net.somta.matecoder.model.app.vo.AppVO">
+	select 
+	<include refid="Base_Column_List"/>
+	from t_app 
+	<include refid="Example_Where_Clause"/>
+</select>
+
+</mapper>   
