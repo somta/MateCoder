@@ -8,20 +8,22 @@ import net.somta.matecoder.model.portal.LoginVO;
 import net.somta.matecoder.model.system.User;
 import net.somta.matecoder.service.system.IAuthService;
 import net.somta.matecoder.service.system.IUserService;
+import net.somta.matecoder.service.system.UserContext;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/v1")
 public class LoginController {
 
     @Autowired
     private IAuthService authService;
     @Autowired
     private IUserService userService;
+    @Autowired
+    private UserContext userContext;
 
-    @PostMapping("/login")
+    @PostMapping("/v1/login")
     @Guest()
     public ResponseDataResult<LoginBO> login(@RequestBody LoginVO loginVO){
         if(loginVO == null){

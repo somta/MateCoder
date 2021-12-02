@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.*;
  * @Version:     1.0.0
  */
 @RestController
-@RequestMapping("/app")
 public class AppController{
 	
 	private final static Logger loger = LoggerFactory.getLogger(AppController.class);
@@ -36,7 +35,7 @@ public class AppController{
 	 * 根据创建引导创建应用
 	 * @param appGuideVO 应用实体
 	 */
-	@PostMapping("/addAppByGuide")
+	@PostMapping("/v1/app/addAppByGuide")
     public ResponseDataResult addAppByGuide(@RequestBody AppGuideVO appGuideVO){
 		if(appGuideVO == null){
 			throw new BizException("app_is_null","参数不能为空");
@@ -51,7 +50,7 @@ public class AppController{
 	 * 根据ID删除应用
 	 * @param id
 	 */
-	@DeleteMapping("/deleteById/{id}")
+	@DeleteMapping("/v1/app/deleteById/{id}")
 	@Permission(module = "App",key = "/app/deleteById",description = "删除应用")
     public ResponseDataResult deleteById(@PathVariable(name = "id") Integer id){
     	if(id == null){
@@ -65,7 +64,7 @@ public class AppController{
 	 * 修改应用
 	 * @param app 应用实体
 	 */
-	@PutMapping("/update")
+	@PutMapping("/v1/app/update")
     public ResponseDataResult update(@RequestBody App app){
     	if(app == null){
 			throw new BizException("app_is_null","app不能为空");
@@ -77,7 +76,7 @@ public class AppController{
      * 根据ID查询应用信息
      * @param id 应用实体ID
      */
-	@GetMapping("/queryById/{id}")
+	@GetMapping("/v1/app/queryById/{id}")
     public ResponseDataResult queryById(@PathVariable(name = "id") String id){
     	App app = appService.queryById(id);
     	return ResponseDataResult.setResponseResult(app);
@@ -88,7 +87,7 @@ public class AppController{
 	 * @param appVO 应用VO实体
 	 * @return
 	 */
-	@PostMapping("/queryByList")
+	@PostMapping("/v1/app/queryByList")
 	public ResponsePaginationDataResult queryByList(@RequestBody AppVO appVO){
 		ResponsePaginationDataResult appList = appService.queryByList(appVO.getPageNum(),appVO.getPageSize(),appVO);
     	return appList;

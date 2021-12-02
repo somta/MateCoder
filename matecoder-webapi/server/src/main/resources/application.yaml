@@ -1,5 +1,5 @@
 server:
-  port: 8888
+  port: 9127
   max-http-header-size: 4048576
 
 spring:
@@ -13,12 +13,12 @@ springdoc:
   api-docs:
     enabled: true
     path: /api-docs
-  packages-to-scan: net.somta.odin.web.controller
+  packages-to-scan: net.somta.matecoder.web.controller
 
 mybatis:
   mapper-locations: classpath*:mybatis/**/Mysql_*Mapper.xml
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
 odin:
