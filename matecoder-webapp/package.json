@@ -1,0 +1,56 @@
+{
+  "name": "matecoder-webapp",
+  "version": "0.0.1",
+  "private": true,
+  "author": "husong",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "analyzer": "vue-cli-service build --report",
+    "lint": "vue-cli-service lint",
+    "lint-fix": "eslint -c .eslintrc.js --fix --ext .jsx,.js,.vue,.ts,.tsx src",
+    "prettier-file": "prettier -c --write src/**/*.{vue,js,ts}",
+    "style-fix": "stylelint --allow-empty-input  --syntax less --fix src/**/*.less"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.2.21",
+    "vue-router": "^4.0.12",
+    "vue-class-component": "^8.0.0-0",
+    "vue-property-decorator": "10.0.0-rc.3",
+    "ant-design-vue": "^2.2.8",
+    "umi-request": "^1.3.5",
+    "moment": "2.27.0",
+    "lodash": "4.17.20"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.2.21",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "typescript": "~4.1.5",
+    "prettier": "^2.2.1",
+    "eslint": "^7.6.0",
+    "eslint-plugin-prettier": "^3.3.4",
+    "eslint-plugin-vue": "^7.0.0",
+    "less": "^3.12.2",
+    "less-loader": "^6.2.0",
+    "@types/lodash": "4.14.171",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-import": "^1.13.0",
+    "stylelint": "^13.6.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-prettier": "^1.1.2",
+
+    "compression-webpack-plugin": "^4.0.0",
+    "terser-webpack-plugin": "^3.1.0"
+  },
+  "license": "MIT"
+}

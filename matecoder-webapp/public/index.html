@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>基础框架</title>
+  <!-- require cdn assets css -->
+  <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.css) { %>
+  <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" />
+  <% } %>
+  <style>
+    .init-loading-wrapper {
+      height: 100vh;
+      width: 100vw;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      background-color: #fff;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+    }
+
+    .enter-app-box {
+      perspective: 120px;
+    }
+
+    .enter-app-box .plane {
+      width: 2em;
+      height: 2em;
+      background-color: #dfdbdc;
+      transform: rotate(0);
+      animation: flip 1s infinite;
+    }
+
+    @keyframes flip {
+      50% {
+        transform: rotateY(180deg);
+      }
+
+      100% {
+        transform: rotateY(180deg) rotateX(180deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>
+    <strong>项目无法正常运行，请开启JS后再次尝试</strong>
+  </noscript>
+  <div id="app">
+    <div class="init-loading-wrapper">
+      <div class="enter-app-box">
+        <div class="plane"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- require cdn assets js -->
+  <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.js) { %>
+  <script type="text/javascript" src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
+  <% } %>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>
